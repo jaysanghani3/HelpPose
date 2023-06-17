@@ -1,9 +1,8 @@
+import HelpPose from "./components/HelpPose";
 
 function App() {
   return (
-    <div>
-      
-    </div>
+  <HelpPose/>
   );
 }
 
