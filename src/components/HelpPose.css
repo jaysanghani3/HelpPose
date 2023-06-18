@@ -1,5 +1,5 @@
 body{
-    background-color: #cbcbcb;
+    background-color: #dadada;
 }
 .titleName{
     font-family: "PT Sans", Calibri, Tahoma, sans-serif;
@@ -11,19 +11,4 @@ body::-webkit-scrollbar{
 }
 body::-webkit-scrollbar-thumb {
 	background-color: #999999;
-}
-.skillBtn {
-    background: #fff;
-    border: none;
-    width: 100%;
-    text-align: left;
-    font-size: 15px;
-    cursor: pointer;
-    font-weight: 600;
-    color: gray;
-}
-.skillBtn:hover {
-    color: #5e3e90;
-    font-size: 16px;
-    background-color: #fafafa;
 }
