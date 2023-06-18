@@ -15,20 +15,20 @@ const Searchbar = () => {
       </div>
 
       <div className="d-none d-md-block col-auto col-xl-auto ms-md-2 px-3 py-1">
-        <button type="button" className="btn text-start bg-white">
+        <button type="button" className="btn modalBtn text-start py-2">
           <i className="bi bi-funnel-fill"></i>
           <span className="d-none d-sm-inline-block ms-2">All Filters</span>
         </button>
       </div>
 
       <div className="d-block d-md-none flex-grow-1 col-auto col-xl-auto ms-md-2 px-3 py-1">
-        <button type="button" className="btn text-start w-100 bg-white">
+        <button type="button" className="btn modalBtn text-start w-100 py-2">
           <i className="bi bi-funnel-fill"></i>
           <span className=" ms-2">All Filters</span>
         </button>
       </div>
       <div className="d-block d-md-none flex-grow-1 col-auto col-xl-auto ms-md-2 px-3 py-1">
-        <button type="button" className="btn text-start w-100 bg-white">
+        <button type="button" className="btn modalBtn text-start w-100 py-2">
           <span className="ms-2">Skills & Roles</span>
         </button>
       </div>

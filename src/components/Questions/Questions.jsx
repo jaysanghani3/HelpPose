@@ -4,6 +4,7 @@ import Searchbar from "./Searchbar";
 import QuestionCard from "./QuestionCard";
 import Model from "./Model.jsx";
 import SharedContext from "../SharedContext";
+import "./Questions.css";
 import "../../Loading.css";
 
 const Questions = () => {
@@ -38,7 +39,7 @@ const [id, setId] = useState(0);
           {questions.length ? (
             questions?.map((question, index) => {
               return (
-                <div key={index} className="p-2 border-bottom">
+                <div key={index} className="p-2 border-bottom pb-3">
                   <QuestionCard question={question} setId={setId}/>
                 </div>
               );
@@ -46,7 +47,7 @@ const [id, setId] = useState(0);
           ) : (
             <div className="loadingParent"><div className="loader m-5 "></div></div>
           )}
-          <div className="modal fade  right" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal fade right" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <Model questions={questions} id={id}/>
       </div>
         </div>
