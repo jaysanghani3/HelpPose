@@ -8,6 +8,7 @@ const HelpPose = () => {
   return (
     <div className="d-flex flex-column mx-auto" style={{ maxWidth: "130em" }}>
       <Header />
+      
 
       <div className="row mx-auto w-100 pt-4 px-5 bg-white">
         <div className="d-none d-md-block col-12 col-md-3">

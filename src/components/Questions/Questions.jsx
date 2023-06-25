@@ -6,13 +6,17 @@ import SharedContext from "../../context/SharedContext";
 import Test from "./Test";
 
 const Questions = () => {
-  const { questions, totalQuestionsCount } = useContext(SharedContext);
+  const { questions, totalQuestionsCount, } = useContext(SharedContext);
 
   return (
     <>
       <div className="row justify-content-center align-items-center p-0">
         <Searchbar />
       </div>
+
+      {/* <div className="row d-flex w-25 ms-3 p-0 bg-white"> */}
+     
+
       <div className="row p-2 flex-grow-1">
         <Test />
       </div>
