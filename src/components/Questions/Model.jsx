@@ -1,7 +1,7 @@
 import React from "react";
 const Model = (props) => {
   const question = props.questions?.find((question) => question?.id === props?.id);
-  console.log(question);
+  // console.log(question);
 
   return (
     <div className="modal-dialog  m-0 ms-auto modalArea modal-xl modal-dialog-scrollable">

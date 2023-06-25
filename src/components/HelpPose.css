@@ -1,9 +1,133 @@
-body{
-    background-color: #f6edff;
+body {
+  scroll-behavior: smooth;
+  font-family: Poppins, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #00294d;
+  background: #f2f5fd;
 }
-body::-webkit-scrollbar{
-    width: 6px;
+body::-webkit-scrollbar {
+  width: 6px;
 }
 body::-webkit-scrollbar-thumb {
-	background-color: #999999;
+  background-color: #999999;
+}
+
+/* ------ Loading css --------- */
+.loadingParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.loader {
+  margin: 10px;
+  width: 200px;
+  height: 140px;
+  background: #aeddff;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 8px;
+  perspective: 1000px;
+  scale: 0.8;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  border-radius: 8px;
+  background: #e1eaffe9 no-repeat;
+  background-size: 60px 10px;
+  background-image: linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0);
+
+  background-position: 15px 30px, 15px 60px, 15px 90px, 105px 30px, 105px 60px, 105px 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  width: calc(50% - 10px);
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  border-radius: 8px;
+  background: #e1eaffe9 no-repeat;
+  background-size: 60px 10px;
+  background-image: linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0), linear-gradient(#1c6295 100px, transparent 0);
+  background-position: 50% 30px, 50% 60px, 50% 90px;
+  transform: rotateY(0deg);
+  transform-origin: left center;
+  animation: paging 1s linear infinite;
+}
+
+@keyframes paging {
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+/* ----- Skill css ------ */
+
+.skillBtn {
+  background: #fff;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: #43677b;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.skillBtn:hover {
+  color: #006ead;
+  font-size: 16px;
+  background-color: #fafafa;
+}
+
+
+/* ----- Question css ------ */
+.smallText {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+}
+.myBadge {
+    background-color: #e0e9fb;
+    color: #647078;
+    border: none;
+    letter-spacing: 0.3px;
+}
+.modalBtn {
+  border: none;
+  padding: 5px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #e0e9fb;
+  color: #1c6295;
+}
+
+.modal.right .modal-dialog {
+  height: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal.right.fade .modal-dialog {
+  -webkit-transition: opacity 0.3s linear, right 2s ease;
+  -moz-transition: opacity 0.3s linear, right 2s ease;
+  -o-transition: opacity 0.3s linear, right 2s ease;
+  transition: opacity 0.3s linear, right 2s ease;
+}
+
+.modal.right.fade.in .modal-dialog {
+  right: 0;
 }
