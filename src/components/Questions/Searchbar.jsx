@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import FilterOffcanvas from "./FilterOffcanvas";
 import SortingOptionButton from "./SortingOptionButton";
+import SharedContext from "../../context/SharedContext";
 
 const Searchbar = () => {
-  const [search, setSearch] = useState("");
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+
+  const { search, handleSearch } = useContext(SharedContext);
+
   return (
     <>
-      <div className="row justify-content-center align-items-center p-0">
         <div className="col-12 col-xl-auto d-flex flex-wrap py-1 px-3 ps-md-3">
           <div className="input-group">
             <i className="bi bi-search input-group-text" />
@@ -39,7 +38,6 @@ const Searchbar = () => {
         <div className="col-12 col-md-auto flex-grow-1 flex-xl-grow-0 col-xl-auto ms-md-auto px-3 py-1">
           <SortingOptionButton />
         </div>
-      </div>
       <FilterOffcanvas />
     </>
   );

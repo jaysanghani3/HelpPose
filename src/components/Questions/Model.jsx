@@ -1,7 +1,9 @@
-import React from "react";
-const Model = (props) => {
-  const question = props.questions?.find((question) => question?.id === props?.id);
-  // console.log(question);
+import React, { useContext } from "react";
+import SharedContext from "../../context/SharedContext";
+
+const Model = () => {
+  const { questions, modelId } = useContext(SharedContext);
+  const question = questions?.find((q) => q?.id === modelId);
 
   return (
     <div className="modal-dialog  m-0 ms-auto modalArea modal-xl modal-dialog-scrollable">
@@ -25,8 +27,7 @@ const Model = (props) => {
             <div className="row flex-nowrap justify-content-center align-items-center">
               <div className="col-auto text-truncate flex-grow-1 flex-shrink-1 overflow-hidden ">
                 <h2 title="Products" className="text-truncate">
-                  {" "}
-                  {question?.name}{" "}
+                  {question?.name}
                 </h2>
               </div>
             </div>
@@ -42,12 +43,9 @@ const Model = (props) => {
                 <div className="Tags border rounded p-2 my-3">
                   <h4>Tags</h4>
                   <div className="d-flex flex-wrap mt-3">
-                    {question?.tags.map((tag, index) => {
-                      return (
-                        <button key={index} className="badge myBadge my-1 me-1">
-                          {tag}
-                        </button>
-                      );
+                    {question?.badges?.map((badge, index) => {
+                      badge.name = badge.name.replace("New", "");
+                      return <span key={index} className="badge myBadge me-3 mb-2  text-capitalize">{badge.name}</span>;
                     })}
                   </div>
                 </div>
@@ -61,7 +59,7 @@ const Model = (props) => {
                     Duration : <span>{question?.timeLimit} min</span>
                   </div>
                   <div className="smallText">
-                    Author : <a href="#">link...</a>
+                    Author : <a href="/">link...</a>
                   </div>
                 </div>
               </div>

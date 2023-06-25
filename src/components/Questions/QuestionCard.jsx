@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
+import SharedContext from "../../context/SharedContext";
 
 const QuestionCard = (props) => {
   const question = props.question;
 
+  const { setModelId } = useContext(SharedContext);
+  
   const handleClick = (id) => {
-    props.setId(id);
+    setModelId(id);
   };
 
   return (
@@ -21,7 +24,7 @@ const QuestionCard = (props) => {
       <div className="my-2">
         {question.badges.map((badge, index) => {
           badge.name = badge.name.replace("New", "");
-          return <button className="badge myBadge me-3 text-capitalize">{badge.name}</button>;
+          return <button key={index} className="badge myBadge me-3 text-capitalize">{badge.name}</button>;
         })}
       </div>
 
