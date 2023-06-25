@@ -1,6 +1,8 @@
 import { useState, createContext } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+
+const skillApi = "https://testdome.com/api/v3/skill-areas?includeSkills=true&%24filter%5BwithSkills%5D=true";
 const queAPI = "https://testdome.com/api/v3/questions?%24filter%5Bterm%5D=&%24filter%5BtermMatchType%5D=containsCaseInsensitive&%24filter%5Bsort%5D=none&%24filter%5Bskills%5D";
 const testApi = "https://testdome.com/api/v3/generators";
 // const testApi = `https://testdome.com/api/v3/questions/${testId}?%24expand=badges%2Ccollaborators%2CscoreDistribution%2CisReadOnly%2Cskill%2CenvironmentInfo%2CcodeLanguageVersion`;
@@ -8,6 +10,7 @@ const testApi = "https://testdome.com/api/v3/generators";
 const SharedContext = createContext();
 
 export function SharedContextProvider({ children }) {
+  
   const [skills, setSkills] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [id, setId] = useState(0);
@@ -20,7 +23,7 @@ export function SharedContextProvider({ children }) {
 
   const fetchSkills = async () => {
     try {
-      const response = await axios.get("https://testdome.com/api/v3/skill-areas?includeSkills=true&%24filter%5BwithSkills%5D=true");
+      const response = await axios.get(skillApi);
       setSkills(response?.data?.value);
     } catch (error) {
       console.error("Error fetching Skills:", error);
@@ -40,7 +43,7 @@ export function SharedContextProvider({ children }) {
   
   useEffect(() => {
     const getQuestions = async () => {
-      const response = await axios.get(`${queAPI}=${id}&%24filter%5Btopic%5D=&%24filter%5Bdifficulty%5D=none&%24filter%5BreleaseStatus%5D=released&%24filter%5BquestionSets%5D=public&%24filter%5BproofreadStatus%5D=&%24filter%5BdeprecationStatus%5D=none&%24sort=none&%24expand=badges%2CscoreDistribution%2CisReadOnly&%24skip=0&%24top=20`);
+      const response = await axios.get(`${queAPI}=${id}&%24filter%5Btopic%5D=&%24filter%5Bdifficulty%5D=none&%24filter%5BreleaseStatus%5D=released&%24filter%5BquestionSets%5D=public%2Cpremium&%24filter%5BproofreadStatus%5D=&%24filter%5BdeprecationStatus%5D=none&%24sort=none&%24expand=badges%2CscoreDistribution%2CisReadOnly&%24skip=0&%24top=20`);
       setTotalQuestionsCount(response?.data?.totalCount);
       setQuestions(response?.data?.value);
     };
@@ -49,6 +52,7 @@ export function SharedContextProvider({ children }) {
   
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    
   };
 
   const value = {

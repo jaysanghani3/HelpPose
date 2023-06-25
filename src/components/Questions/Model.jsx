@@ -2,8 +2,25 @@ import React, { useContext } from "react";
 import SharedContext from "../../context/SharedContext";
 
 const Model = () => {
-  const { questions, modelId } = useContext(SharedContext);
+  const { questions, modelId, setModelId } = useContext(SharedContext);
   const question = questions?.find((q) => q?.id === modelId);
+  const index = questions?.findIndex((q) => q?.id === modelId);
+
+  const handlePrevious = () => {
+    if (index > 0) {
+      setModelId(questions[index - 1].id);
+    } else {
+      setModelId(questions[questions.length - 1].id);
+    }
+  };
+
+  const handleNext = () => {
+    if (index < questions.length - 1) {
+      setModelId(questions[index + 1].id);
+    } else {
+      setModelId(questions[0].id);
+    }
+  };
 
   return (
     <div className="modal-dialog  m-0 ms-auto modalArea modal-xl modal-dialog-scrollable">
@@ -13,12 +30,16 @@ const Model = () => {
             <i className="bi bi-arrow-left me-2" /> Back
           </button>
           <div className="ms-auto">
-            <button className="modalBtn me-3 py-2 px-3">
-              <i className="me-2 bi bi-chevron-double-left"></i>Previous
-            </button>
-            <button className="modalBtn me-3 py-2 px-3">
-              Next<i className="bi bi-chevron-double-right ms-2"></i>
-            </button>
+            {index > 0 && (
+              <button className="modalBtn me-3 py-2 px-3" onClick={handlePrevious}>
+                <i className="bi bi-chevron-double-left me-2"></i>Previous
+              </button>
+            )}
+            {index < questions.length - 1 && (
+              <button className="modalBtn me-3 py-2 px-3" onClick={handleNext}>
+                <i className="bi bi-chevron-double-right me-2"></i>Next
+              </button>
+            )}
           </div>
         </div>
 
@@ -35,7 +56,7 @@ const Model = () => {
             <div className="row">
               <div className="col-12 col-xl-9 col-lg-8 border rounded my-3 p-2">
                 <div className="card-body p-2">
-                  <p style={{ textAlign: "justify", letterSpacing: "0.6px" }} dangerouslySetInnerHTML={{ __html: question?.descriptionHtml }} />
+                  <p style={{ textAlign: "justify", letterSpacing: "0.6px" }} dangerouslySetInnerHTML={{ __html: question?.descriptionHtml ?question?.descriptionHtml : question?.shortDescription }} />
                 </div>
               </div>
 
@@ -45,7 +66,11 @@ const Model = () => {
                   <div className="d-flex flex-wrap mt-3">
                     {question?.badges?.map((badge, index) => {
                       badge.name = badge.name.replace("New", "");
-                      return <span key={index} className="badge myBadge me-3 mb-2  text-capitalize">{badge.name}</span>;
+                      return (
+                        <span key={index} className="badge myBadge me-3 mb-2  text-capitalize">
+                          {badge.name}
+                        </span>
+                      );
                     })}
                   </div>
                 </div>
