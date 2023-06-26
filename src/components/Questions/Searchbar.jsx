@@ -56,12 +56,12 @@ const Searchbar = () => {
           <span className="ms-2">Skills & Roles</span>
         </button>
       </div>
-      
-      <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex={-1}  id="offcanvasWithBothOptions" aria-labelledby="Skills">
-        <div className="offcanvas-header">
-          <div className="py-2 text-center fw-semibold border-bottom rounded-top-2 offcanvas-title" id="Skills" style={{ backgroundColor: "#F2F5FD" }}>
+
+      <div className="offcanvas offcanvas-start p-0" data-bs-scroll="true" tabIndex={-1} id="Skills" aria-labelledby="Skills">
+        <div className="offcanvas-header border-bottom" style={{ backgroundColor: "#F2F5FD" }}>
+          <h4 className="offcanvas-title" id="Skills" >
             Skills & Roles
-          </div>
+          </h4>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
