@@ -94,6 +94,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* ----- Question css ------ */
+.questionCard:hover{
+  background-color: #88c5e593;
+}
 .smallText {
   font-size: 12px;
   letter-spacing: 0.6px;

@@ -22,7 +22,7 @@ export function SharedContextProvider({ children }) {
   const [search, setSearch] = useState("");
   const [totalTestsCount, setTotalTestsCount] = useState(0);
   const [testId, setTestId] = useState(0);
-  const [test, setTest] = useState([]);
+  const [tests, setTests] = useState([]);
   const [filteredQuestionsData, setFilteredQuestionsData] = useState([]);
   const [filteredSkillsData, setFilteredSkillsData] = useState([]);
   
@@ -38,7 +38,7 @@ export function SharedContextProvider({ children }) {
   const getTest = async () => {
     const response = await axios.get(testApi);
     setTotalTestsCount(response?.data?.totalCount);
-    setTest(response?.data?.value);
+    setTests(response?.data?.value);
   };
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export function SharedContextProvider({ children }) {
     totalQuestionsCount, setTotalQuestionsCount,
     totalTestsCount, setTotalTestsCount,
     testId, setTestId,
-    test, setTest,
+    tests, setTests,
     handleSearch,
     filteredQuestionsData,
     filteredSkillsData

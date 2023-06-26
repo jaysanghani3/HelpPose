@@ -11,10 +11,10 @@ const QuestionCard = (props) => {
   };
 
   return (
-    <div>
+    <div className="p-2">
       <div className="d-flex align-items-center overflow-hidden flex-shrink-1 text-truncate col-auto">
-        <button type="button" style={{ color: "#00294D" }} className="border-0 p-0 text-truncate bg-transparent" data-bs-toggle="modal" data-bs-target="#QuestionModal" onClick={() => handleClick(question.id)}>
-          <span className="fw-semibold" style={{ fontSize: "19px", letterSpacing: "1px" }}>
+        <button type="button" style={{ color: "#2885BA" }} className="border-0 p-0 text-truncate bg-transparent" data-bs-toggle="modal" data-bs-target="#QuestionModal" onClick={() => handleClick(question.id)}>
+          <span className="fw-bold" style={{ fontSize: "17px"}}>
             {question.name}
           </span>
           <span style={{  letterSpacing: "0.3px",fontSize: "15px", color: "#004475" }}> - {question.shortDescription}</span>
