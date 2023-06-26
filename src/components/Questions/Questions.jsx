@@ -1,19 +1,22 @@
 import React, { useContext, useState } from "react";
 import Searchbar from "./Searchbar";
 import QuestionCard from "./QuestionCard";
-import Model from "./Model.jsx";
+import QuestionModel from "./QuestionModel.jsx";
 import SharedContext from "../../context/SharedContext";
 import TestCard from "./TestCard";
+import TestModel from "./TestModel";
 
 const Questions = () => {
-  const { totalTestsCount, questions, totalQuestionsCount, tests } = useContext(SharedContext);
+  const { totalTestsCount, questions, totalQuestionsCount, tests,setTestId } = useContext(SharedContext);
 
   const [showTest, setShowTest] = useState(true);
   const toggleView = () => {
     setShowTest(!showTest);
   };
 
-  
+  const handleClick = (id) => {
+    setTestId(id);
+  };
   return (
     <>
       <div className="row justify-content-center align-items-center p-0">
@@ -33,9 +36,11 @@ const Questions = () => {
             {showTest
               ? tests?.slice(0, 3).map((test, index) => {
                   return (
-                    <div key={index} className="col-3 m-3 rounded d-flex border flex-grow-1 p-3 questionCard" style={{ cursor: "pointer" }} >
-                      <div className="p-2">{/* <img src={test?.iconUrl} alt="icon" /> */}</div>
-                      <div className="fw-bold" style={{ fontSize: "16px", color: "#2885BA"}}>{test?.name}</div>
+                    <div key={index} data-bs-toggle="modal" data-bs-target="#TestModel" className="col-3 m-3 rounded d-flex border flex-grow-1 p-3 questionCard" style={{ cursor: "pointer" }} onClick={() => handleClick(test.id)}>
+                      <div className="p-2">
+                        <img src={test?.skill.thumbnailUrl} alt="*"  width="40px" height="40px" />
+                      </div>
+                      <div className="ms-3 fw-bold align-self-center" style={{ fontSize: "16px", color: "#2885BA"}}>{test?.name}</div>
                     </div>
                   );
                 })
@@ -85,7 +90,10 @@ const Questions = () => {
               </>
             )}
             <div className="modal fade right" id="QuestionModal" tabIndex={-1} aria-labelledby="QuestionModalLabel" aria-hidden="true">
-              <Model />
+              <QuestionModel />
+            </div>
+            <div className="modal fade right" id="TestModel" tabIndex={-1} aria-labelledby="TestModelLabel" aria-hidden="true">
+              <TestModel />
             </div>
           </div>
         </>

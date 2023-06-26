@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import SharedContext from "../../context/SharedContext";
 
-const Model = () => {
+const QuestionModel = () => {
   const { questions, modelId, setModelId } = useContext(SharedContext);
   const question = questions?.find((q) => q?.id === modelId);
   const index = questions?.findIndex((q) => q?.id === modelId);
@@ -95,4 +95,4 @@ const Model = () => {
     </div>
   );
 };
-export default Model;
+export default QuestionModel;

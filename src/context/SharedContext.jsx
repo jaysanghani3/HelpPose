@@ -23,6 +23,7 @@ export function SharedContextProvider({ children }) {
   const [totalTestsCount, setTotalTestsCount] = useState(0);
   const [testId, setTestId] = useState(0);
   const [tests, setTests] = useState([]);
+  
   const [filteredQuestionsData, setFilteredQuestionsData] = useState([]);
   const [filteredSkillsData, setFilteredSkillsData] = useState([]);
   
@@ -34,11 +35,12 @@ export function SharedContextProvider({ children }) {
       console.error("Error fetching Skills:", error);
     }
   };
-
+  // /${testId}
   const getTest = async () => {
-    const response = await axios.get(testApi);
+    const response = await axios.get(`${testApi}?%24expand=badges%2Ccollaborators%2CscoreDistribution%2CisReadOnly%2Cskill%2CenvironmentInfo%2CcodeLanguageVersion`);
     setTotalTestsCount(response?.data?.totalCount);
     setTests(response?.data?.value);
+    console.log(tests)
   };
 
   useEffect(() => {

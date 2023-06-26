@@ -24,9 +24,7 @@ const QuestionCard = (props) => {
       <div className="my-2">
         {question.badges.map((badge, index) => {
           badge.name = badge.name.replace("New", "");
-          return <button data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          data-bs-title="{badge.descriptionHtml}" type="button" 
+          return <button  type="button" 
           key={index}
           className="badge myBadge me-3 text-capitalize">{badge.name}</button>;
         })}
