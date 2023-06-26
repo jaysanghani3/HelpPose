@@ -5,12 +5,12 @@ const FilterOffcanvas = () => {
   const questionsTypes = ["Multiple Choice", "Live Coding", "Multiple Correct Answers", "Muliple MCQ", "Text Answer", "Number Picker", "Fill the Blacks", "File Upload", "File Upload with Validators", "Quality Assurance"];
   return (
     <form>
-      <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabIndex={-1} id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabIndex={-1} id="Filters" aria-labelledby="FiltersLabel">
         <div className="offcanvas-header pb-3 border-bottom">
           <button type="button" className="modalBtn btn py-2 pe-4" data-bs-dismiss="offcanvas">
             <i className="ps-2 bi bi-arrow-left" /> Back
           </button>
-          <h4 className="offcanvas-title" id="offcanvasWithBothOptionsLabel" style={{ color: "#004475" }}>
+          <h4 className="offcanvas-title" id="FiltersLabel" style={{ color: "#004475" }}>
             Filters
           </h4>
           <button type="reset" className="modalBtn btn py-2 px-4">
