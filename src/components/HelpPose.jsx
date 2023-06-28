@@ -10,12 +10,12 @@ const HelpPose = () => {
       <Header />
       
 
-      <div className="row mx-auto w-100 pt-4 px-5 bg-white">
-        <div className="d-none d-md-block col-12 col-md-3">
+      <div className="row mx-auto w-100 pt-4 px-xl-5 px-md-2 bg-white">
+        <div className="d-none d-md-block col-12 col-md-4 col-lg-3">
           <Skills />
         </div>
 
-        <div className="col-12 col-md-9 bg-white rounded-2 ">
+        <div className="col-12 col-md-8 col-lg-9 bg-white rounded-2 ">
           <Questions />
         </div>
       </div>

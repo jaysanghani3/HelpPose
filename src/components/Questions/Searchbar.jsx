@@ -3,8 +3,10 @@ import FilterOffcanvas from "./FilterOffcanvas";
 import SortingOptionButton from "./SortingOptionButton";
 import SharedContext from "../../context/SharedContext";
 import NestedAccordion from "../Skills/NestedAccordion";
+
 const Searchbar = () => {
-  const { search, handleSearch, filteredQuestionsData, filteredSkillsData } = useContext(SharedContext);
+
+  const { search, handleSearch, filteredQuestionsData, filteredSkillsData, suggestionVisible,handleSName } = useContext(SharedContext);
 
   return (
     <>
@@ -12,25 +14,25 @@ const Searchbar = () => {
         <div className=" position-relative  d-flex flex-wrap">
           <div className="input-group">
             <i className="bi bi-search input-group-text" />
-            <input type="text" autoComplete="off" placeholder="Search" className="form-control" name="input" value={search} onChange={handleSearch} />
+            <input type="text" autoComplete="off" placeholder="Search" className="form-control"  name="input" value={search} onChange={handleSearch} />
           </div>
-          {search?.length > 0 && (
+          {
+          suggestionVisible&&
+          (
             <div className="position-absolute shadow px-4 py-2 bg-white w-100 show z-3" style={{ top: "43px" }}>
               <p className="text-muted fw-bold smallText mt-2">Skills</p>
 
-              {search?.length > 0 &&
-                filteredSkillsData.slice(0, 3).map((skill, index) => (
-                  <div key={index} className="">
-                    <h6 className="text-primary">{skill}</h6>
-                  </div>
-                ))}
-              {search?.length > 0 && <p className="text-muted fw-bold smallText mt-2">Questions</p>}
+              {
+                filteredSkillsData?.slice(0, 3).map((skill, index) => (
+                    <button key={index} className="text-start form-control border-0 text-primary" onClick={handleSName}>{skill}</button>
+                ))
+              }
+              { <p className="text-muted fw-bold smallText mt-2">Questions</p>}
 
-              {search?.length > 0 &&
-                filteredQuestionsData.slice(0, 3).map((question, index) => (
-                  <div key={index} className="">
-                    <h6 className="text-primary">{question}</h6>
-                  </div>
+              {
+                filteredQuestionsData?.slice(0, 3).map((question, index) => (
+                  <button key={index} className="text-start form-control border-0 text-primary" onClick={handleSName}>{question}</button>
+                    
                 ))}
             </div>
           )}

@@ -22,7 +22,6 @@ const TestModel = () => {
     }
   };
 
-  console.log(test);
   return (
     <div className="modal-dialog  m-0 ms-auto modalArea modal-xl modal-dialog-scrollable">
       <div tabIndex={-1} className="modal-content rounded-0" style={{ height: "100vh" }}>

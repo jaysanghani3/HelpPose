@@ -23,10 +23,11 @@ export function SharedContextProvider({ children }) {
   const [totalTestsCount, setTotalTestsCount] = useState(0);
   const [testId, setTestId] = useState(0);
   const [tests, setTests] = useState([]);
-  
   const [filteredQuestionsData, setFilteredQuestionsData] = useState([]);
   const [filteredSkillsData, setFilteredSkillsData] = useState([]);
-  
+  const [searchClickValue, setSearchClickValue] = useState("");
+  const [suggestionVisible, setSuggestionVisible] = useState(false);
+
   const fetchSkills = async () => {
     try {
       const response = await axios.get(skillApi);
@@ -35,13 +36,30 @@ export function SharedContextProvider({ children }) {
       console.error("Error fetching Skills:", error);
     }
   };
-  // /${testId}
   const getTest = async () => {
     const response = await axios.get(`${testApi}?%24expand=badges%2Ccollaborators%2CscoreDistribution%2CisReadOnly%2Cskill%2CenvironmentInfo%2CcodeLanguageVersion`);
     setTotalTestsCount(response?.data?.totalCount);
     setTests(response?.data?.value);
-    console.log(tests)
+    
+    
   };
+
+  const handleSName = (e) => {
+    
+    setSearchClickValue(e.target.innerText);
+    
+    skills.map((item) => {
+      item.children.map((item1) => {
+        item1.skills.map((item2) => {
+          if(item2.name === e.target.innerText)
+            setId(item2.id);
+        })
+      })
+    })
+
+    setSuggestionVisible(false);
+  };
+
 
   useEffect(() => {
     fetchSkills();
@@ -58,18 +76,16 @@ export function SharedContextProvider({ children }) {
   }, [id]);
   
   useEffect(() => {
+    
     const getSuggestion = async () => {
       const responseQuestions = await axios.get(suggestionQuestionsApi);
       const dataQuestions = (responseQuestions?.data?.value);
-      setFilteredQuestionsData(dataQuestions?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())))
-
+      
       const responseSkills = await axios.get(suggestionSkillsApi);
       const dataSkills = (responseSkills?.data?.value);
-      setFilteredSkillsData(dataSkills?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())))
-
-      console.log(filteredSkillsData.slice(0, 3))
-      console.log(filteredQuestionsData.slice(0, 3))
       
+      setFilteredQuestionsData(dataQuestions?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())))
+      setFilteredSkillsData(dataSkills?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())));      
     };
     getSuggestion();
   }, [search]);
@@ -77,6 +93,7 @@ export function SharedContextProvider({ children }) {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    setSuggestionVisible(true);
   };
 
   const value = {
@@ -90,8 +107,12 @@ export function SharedContextProvider({ children }) {
     testId, setTestId,
     tests, setTests,
     handleSearch,
+    searchClickValue, setSearchClickValue,
     filteredQuestionsData,
-    filteredSkillsData
+    filteredSkillsData,
+    handleSName,
+    suggestionVisible, setSuggestionVisible,
+
   };
 
   return <SharedContext.Provider value={value}>{children}</SharedContext.Provider>;
