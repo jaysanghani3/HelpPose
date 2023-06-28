@@ -5,8 +5,7 @@ import SharedContext from "../../context/SharedContext";
 import NestedAccordion from "../Skills/NestedAccordion";
 
 const Searchbar = () => {
-
-  const { search, handleSearch, filteredSkillsData, suggestionVisible,handleSName } = useContext(SharedContext);
+  const { search, handleSearch, filteredSkillsData, suggestionVisible, handleSName } = useContext(SharedContext);
 
   return (
     <>
@@ -14,19 +13,17 @@ const Searchbar = () => {
         <div className=" position-relative  d-flex flex-wrap">
           <div className="input-group">
             <i className="bi bi-search input-group-text" />
-            <input type="text" autoComplete="off" placeholder="Search" className="form-control"  name="input" value={search} onChange={handleSearch} />
+            <input type="text" autoComplete="off" placeholder="Search" className="form-control" name="input" value={search} onChange={handleSearch} />
           </div>
-          {
-          suggestionVisible&&
-          (
-            <div className="position-absolute style-1 shadow px-4 py-2 bg-white w-100 show z-3 scroll overflow-auto" style={{ top: "43px",maxHeight:"300px" }}>
+          {suggestionVisible && (
+            <div className="position-absolute style-1 shadow px-4 py-2 bg-white w-100 show z-3 scroll overflow-auto" style={{ top: "43px", maxHeight: "300px" }}>
               <p className="text-muted fw-bold smallText mt-2">Skills</p>
 
-              {
-                filteredSkillsData?.map((skill, index) => (
-                    <button key={index} className="text-start form-control border-0 text-primary" onClick={handleSName}>{skill}</button>
-                ))
-              }
+              {filteredSkillsData?.map((skill, index) => (
+                <button key={index} className="text-start form-control border-0 text-primary" onClick={handleSName}>
+                  {skill}
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -54,7 +51,7 @@ const Searchbar = () => {
 
       <div className="offcanvas offcanvas-start p-0" data-bs-scroll="true" tabIndex={-1} id="Skills" aria-labelledby="Skills">
         <div className="offcanvas-header border-bottom" style={{ backgroundColor: "#F2F5FD" }}>
-          <h4 className="offcanvas-title" id="Skills" >
+          <h4 className="offcanvas-title" id="Skills">
             Skills & Roles
           </h4>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -64,9 +61,14 @@ const Searchbar = () => {
         </div>
       </div>
 
-      <div className="col-12 col-md-auto flex-grow-1 flex-xl-grow-0 col-xl-auto ms-md-auto px-3 py-1">
+      <div className="col-auto flex-grow-1 flex-xl-grow-0 ms-md-auto px-3 py-1">
         <SortingOptionButton />
       </div>
+
+      <div className="col-auto ms-md-2 px-3 py-1">
+        <button className="btn btn-success px-4 ">Create Question</button>
+      </div>
+      
       <FilterOffcanvas />
     </>
   );

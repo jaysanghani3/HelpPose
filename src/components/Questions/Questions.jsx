@@ -20,7 +20,7 @@ const Questions = () => {
   };
   return (
     <>
-      <div className="row justify-content-center align-items-center p-0">
+      <div className="row d-flex justify-content-between align-items-center p-0">
         <Searchbar />
       </div>
 

@@ -61,16 +61,16 @@ const TestModel = () => {
                   <div className="row">
                     <div className="col-12">
                       <h3 className="mb-3">About the test</h3>
-                      <p style={{ textAlign: "justify", letterSpacing: "0.6px" }} dangerouslySetInnerHTML={{ __html: test?.descriptionHtml ? test?.descriptionHtml : test?.shortDescription }} />
+                      <p style={{ textAlign: "justify", letterSpacing: "0.6px", fontSize:"18px" }} dangerouslySetInnerHTML={{ __html: test?.descriptionHtml ? test?.descriptionHtml : test?.shortDescription }} />
                     </div>
                   </div>
 
-                  <div className="row">
+                  {/* <div className="row">
                     <div className="col-12">
-                      <h3 className="mb-3">Sample public questions</h3>
+                      <h3 className="mt-5">Sample public questions</h3>
 
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

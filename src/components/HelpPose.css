@@ -1,6 +1,7 @@
 body {
   scroll-behavior: smooth;
-  font-family: Poppins, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /*Poppins , "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif  */
+  /* font-family: "Comic Sans MS" !important; */
   color: #00294d;
   background: #f2f5fd;
 }

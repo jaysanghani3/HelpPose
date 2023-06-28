@@ -56,7 +56,7 @@ const QuestionModel = () => {
             <div className="row">
               <div className="col-12 col-xl-9 col-lg-8 border rounded my-3 p-2">
                 <div className="card-body p-2">
-                  <p style={{ textAlign: "justify", letterSpacing: "0.6px" }} dangerouslySetInnerHTML={{ __html: question?.descriptionHtml ? question?.descriptionHtml : question?.shortDescription }} />
+                  <p style={{ textAlign: "justify", letterSpacing: "0.6px", fontSize:"18px" }} dangerouslySetInnerHTML={{ __html: question?.descriptionHtml ? question?.descriptionHtml : question?.shortDescription }} />
 
                   <div className="mt-5">
                   <header className="fw-5 fw-semibold mb-3">{question?.badges[0].name}</header>
