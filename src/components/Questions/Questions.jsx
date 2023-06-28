@@ -10,6 +10,7 @@ const Questions = () => {
   const { totalTestsCount, questions, totalQuestionsCount, tests, setTestId } = useContext(SharedContext);
 
   const [showTest, setShowTest] = useState(true);
+
   const toggleView = () => {
     setShowTest(!showTest);
   };
@@ -59,13 +60,13 @@ const Questions = () => {
           
           <div className="nav nav-tabs nav-fill d-lg-none mx-2" id="myTab" role="tablist">
             <div className="nav-item" role="presentation">
-              <button id="ques" data-bs-toggle="tab" data-bs-target="#ques-pane" type="button" role="tab" aria-controls="ques-pane" aria-selected="true" className="nav-link text-muted fw-semibold">
+              <button id="ques" data-bs-toggle="tab" data-bs-target="#ques-pane" type="button" role="tab" aria-controls="ques-pane" aria-selected="true" className="nav-link text-muted fw-semibold" onClick={()=>setShowTest(true)}>
                 {totalQuestionsCount} questions
               </button>
             </div>
 
             <div className="nav-item" role="presentation">
-              <button id="test" data-bs-toggle="tab" data-bs-target="#test-pane" type="button" role="tab" aria-controls="test-pane" aria-selected="true" className="nav-link text-muted fw-semibold">
+              <button id="test" data-bs-toggle="tab" data-bs-target="#test-pane" type="button" role="tab" aria-controls="test-pane" aria-selected="true" className="nav-link text-muted fw-semibold "  onClick={()=>setShowTest(false)}>
                 {totalTestsCount} test
               </button>
             </div>
@@ -105,6 +106,7 @@ const Questions = () => {
                 </div>
               </>
             )}
+
             <div className="modal fade right" id="QuestionModal" tabIndex={-1} aria-labelledby="QuestionModalLabel" aria-hidden="true">
               <QuestionModel />
             </div>
