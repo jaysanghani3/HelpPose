@@ -3,6 +3,7 @@ import FilterOffcanvas from "./FilterOffcanvas";
 import SortingOptionButton from "./SortingOptionButton";
 import SharedContext from "../../context/SharedContext";
 import NestedAccordion from "../Skills/NestedAccordion";
+import { Link } from 'react-router-dom';
 
 const Searchbar = () => {
   const { search, handleSearch, filteredSkillsData, suggestionVisible, handleSName } = useContext(SharedContext);
@@ -65,9 +66,12 @@ const Searchbar = () => {
         <SortingOptionButton />
       </div>
 
+
       <div className="col-auto ms-md-2 px-3 py-1">
-        <button className="btn btn-success px-4 ">Create Question</button>
-      </div>
+      <Link to="/create-question" activeClassName="active">
+        <button className="btn btn-success px-4">Create Question</button>
+      </Link>
+    </div>
       
       <FilterOffcanvas />
     </>

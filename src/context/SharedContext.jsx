@@ -8,7 +8,7 @@ const testApi = "https://testdome.com/api/v3/generators";
 // const testApi = `https://testdome.com/api/v3/questions/${testId}?%24expand=badges%2Ccollaborators%2CscoreDistribution%2CisReadOnly%2Cskill%2CenvironmentInfo%2CcodeLanguageVersion`;
 // const suggestionQuestionsApi = "https://testdome.com/api/v3/search-data/questions/names?builtInOnly=true";
 // const suggestionSkillsApi = "https://testdome.com/api/v3/search-data/generators/names?publicOnly=true";
-
+const topicApi ="https://testdome.com/api/v3/topics?%24sort=name&%24expand=skillType";
 const SharedContext = createContext();
 
 export function SharedContextProvider({ children }) {
@@ -25,6 +25,7 @@ export function SharedContextProvider({ children }) {
   const [filteredSkillsData, setFilteredSkillsData] = useState([]);
   const [searchClickValue, setSearchClickValue] = useState("");
   const [suggestionVisible, setSuggestionVisible] = useState(false);
+  const [topics, setTopics] = useState([]);
 
   const fetchSkills = async () => {
     try {
@@ -54,24 +55,20 @@ export function SharedContextProvider({ children }) {
     getQuestions();
   }, [id]);
 
+  const arr = [];
   useEffect(() => {
     const getSuggestion = async () => {
-      let arr = [];
-      skills.map((item) => {
-        item.children.map((item1) => {
-          item1.skills.map((item2) => {
-            arr.push(item2.name);
+        skills.map((item) => {
+          item.children.map((item1) => {
+            item1.skills.map((item2) => {
+              arr.push(item2.name);
+            });
           });
-          console.log(arr);
-          setFilteredSkillsData(arr?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())));
-          // item1.skills.map((item2) => {
-          // })
         });
-      });
-      // const responseSkills = await axios.get(suggestionSkillsApi);
-      // const dataSkills = (responseSkills?.data?.value);
-      // setFilteredSkillsData(dataSkills?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())));
+      setFilteredSkillsData(arr?.filter((item) => item?.toLowerCase()?.includes(search?.toLowerCase())));
     };
+    // console.log(topic);
+    
     getSuggestion();
   }, [search]);
 
@@ -91,6 +88,14 @@ export function SharedContextProvider({ children }) {
     setSearch(e.target.value);
     setSuggestionVisible(true);
   };
+
+  useEffect(() => {
+    const getTopic = async () => {
+      const response = await axios.get(topicApi);
+      setTopics(response?.data?.value);
+    };
+    getTopic();
+  }, []);
 
   const value = {
     id,
@@ -118,6 +123,9 @@ export function SharedContextProvider({ children }) {
     handleSName,
     suggestionVisible,
     setSuggestionVisible,
+    topics,
+    setTopics,
+
   };
 
   return <SharedContext.Provider value={value}>{children}</SharedContext.Provider>;
