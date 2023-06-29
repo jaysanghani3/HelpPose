@@ -162,3 +162,8 @@ body::-webkit-scrollbar-thumb {
 	background-color: #555;
 }
 
+.full-width-textarea {
+  width: 100%;
+  height: 15em; /* Set the desired height here */
+  resize: vertical; /* Allow vertical resizing if needed */
+}

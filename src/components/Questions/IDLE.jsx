@@ -14,7 +14,7 @@ const IDLE = () => {
 
   return (
     <div>
-      <textarea value={code} onChange={handleCodeChange} placeholder="Enter your code here" rows={15} cols={104} />
+      <textarea className="full-width-textarea" value={code} onChange={handleCodeChange} placeholder="Enter your code here"/>
       <div className="d-flex justify-content-end">
         <button className="modalBtn mt-2 px-5 py-2" onClick={handleRunCode}>
           Run

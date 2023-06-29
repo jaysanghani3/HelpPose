@@ -3,16 +3,13 @@ import Header from "../Header/Header";
 import SharedContext from "../../context/SharedContext";
 
 const CreateQuestion = () => {
-  const { skills, topics } = useContext(SharedContext);
+  const { skills, topics, } = useContext(SharedContext);
 
   const topicArr =[];
 
   topics.map((item) => {
     topicArr.push(item.name);
   });
-  // console.log(topicArr);
-  
-
 
   const [selectedOptions, setSelectedOptions] = React.useState([]);
 
@@ -65,7 +62,16 @@ const CreateQuestion = () => {
             <div className="col-5 ">
               <select className="form-select" aria-label="Default select example">
                 <option value="none">None</option>
-                
+                {
+                  skills.map((skill) => 
+                    skill.children.map((item1) => 
+                      item1.skills.map((item2,index) => 
+                       <option key={index}>{item2.name}</option>
+                      // console.log(item2.name)
+                    )
+                  )
+              )
+                }
               </select>
             </div>
           </div>
@@ -79,8 +85,8 @@ const CreateQuestion = () => {
             <div className="col-5 ">
               <select className="form-select" aria-label="Default select example" onChange={addToList} >
                 <option value="none">None</option>
-                {topicArr.map((item) => {
-                  return <option value={item}>{item}</option>;
+                {topicArr.map((item,index) => {
+                  return <option value={item} key={index}>{item}</option>;
                 })}
                
               </select>
