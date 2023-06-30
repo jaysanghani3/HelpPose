@@ -141,6 +141,13 @@ body::-webkit-scrollbar-thumb {
   right: 0;
 }
 
+@media (min-width: 379px)
+{
+  .create-question-button
+  {
+    width: auto !important;
+  }
+}
 
 #style-1::-webkit-scrollbar-track
 {
