@@ -11,14 +11,14 @@ const HelpPose = () => {
       <Header />
 
       <div className="container">
-        <div className="d-flex justify-content-between px-5 py-1  flex-grow-1 ">
-          <div className="fs-4 fw-semibold">Library</div>
+        <div className="d-flex justify-content-between px-3 mt-2 flex-grow-1 ">
+          <div className="fs-3 fw-semibold">Library</div>
           <Link to="/create-question" className="">
-            <button className="btn btn-success w-A px-4">Create Question</button>
+            <button className="btn btn-success px-4">Create Question</button>
           </Link>
         </div>
 
-        <div className="row mx-auto w-100 pt-4 px-xl-5 px-md-2">
+        <div className="row mx-auto w-100 pt-4">
           <div className="d-none d-md-block col-12 col-md-4 col-lg-3">
             <Skills />
           </div>

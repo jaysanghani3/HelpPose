@@ -61,7 +61,7 @@ const Searchbar = () => {
         </div>
       </div>
 
-      <div className="col-auto flex-grow-1 flex-sm-grow-0 ms-md-auto px-3 py-1">
+      <div className="col-auto flex-grow-1 flex-xl-grow-0 ms-md-auto px-3 py-1">
         <SortingOptionButton />
       </div>
 

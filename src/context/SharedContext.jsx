@@ -35,6 +35,7 @@ export function SharedContextProvider({ children }) {
       console.error("Error fetching Skills:", error);
     }
   };
+  
   const getTest = async () => {
     const response = await axios.get(`${testApi}?%24expand=badges%2Ccollaborators%2CscoreDistribution%2CisReadOnly%2Cskill%2CenvironmentInfo%2CcodeLanguageVersion`);
     setTotalTestsCount(response?.data?.totalCount);
